@@ -63,7 +63,6 @@ class App extends Component {
         <header>
             <div className='wrapper'>
               <h1>Food Log</h1>
-
             </div>
         </header>
         <div className='container'>
