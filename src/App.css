@@ -51,6 +51,7 @@ header i {
   margin-bottom: 34px;
   width: 25%;
   margin-right: auto;
+  max-height: 180px;
 }
 
 .display-item {
