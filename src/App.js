@@ -32,6 +32,11 @@ class App extends Component {
     });
   }
 
+  removeItem(itemId) {
+    const itemRef = firebase.database().ref(`/items/${itemId}`);
+    itemRef.remove();
+  }
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -77,6 +82,7 @@ class App extends Component {
                     <li key={item.id}>
                       <h3>{item.title}</h3>
                       <p>brought by: {item.user}</p>
+                      <button onClick={() => this.removeItem(item.id)}>Remove Item</button>
                     </li>
                   )
                 })}
