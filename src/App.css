@@ -133,3 +133,50 @@ button {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   padding: 10px 6px;
 }
+
+
+.login-form {
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 30px #bfc8cf;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  max-width: 450px;
+  margin: 5% auto;  
+}
+
+.login-form h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.login-form input {
+  background: white;
+  border-radius: 5px;
+  border: solid 1px #225378;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 70%;
+}
+
+.login-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.login-form button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.input-row {
+  height: 24px;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.feedback {
+  font-weight: 600;
+  padding-top: 1rem;
+}

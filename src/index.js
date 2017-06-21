@@ -6,8 +6,10 @@ import './index.css'
 import firebase from './firebase.js'
 
 let appState = {
+  login: null,
   currentItem: '',
   username: '',
+  password: '',
   items: []
 }
 
