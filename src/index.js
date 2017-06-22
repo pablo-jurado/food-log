@@ -1,29 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 import firebase from './firebase.js'
 
 let appState = {
-  login: null,
+  isLogin: null,
   currentItem: '',
-  username: '',
+  name: '',
+  email: '',
   password: '',
   items: []
 }
 
-function updateDB() {
-  const itemsRef = firebase.database().ref('items');
+function updateDB () {
+  const itemsRef = firebase.database().ref('items')
   itemsRef.on('value', (snapshot) => {
-    let items = snapshot.val();
-    let newState = [];
+    let items = snapshot.val()
+    let newState = []
     for (let item in items) {
       newState.push({
         id: item,
         title: items[item].title,
         user: items[item].user
-      });
+      })
     }
     appState.items = newState
   })

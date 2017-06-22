@@ -142,7 +142,7 @@ button {
   border-radius: 10px;
   margin-bottom: 15px;
   max-width: 450px;
-  margin: 5% auto;  
+  margin: 5% auto;
 }
 
 .login-form h1 {
@@ -166,7 +166,7 @@ button {
 }
 
 .login-form button {
-  width: 100%;
+  width: 48%;
   margin-top: 1rem;
 }
 
@@ -179,4 +179,13 @@ button {
 .feedback {
   font-weight: 600;
   padding-top: 1rem;
+}
+
+.action-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.secondary-btn {
+  opacity: 0.5;
 }

@@ -1,40 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react'
 import firebase from './firebase.js'
 import appState from './index.js'
 
-function removeItem(itemId) {
-  const itemRef = firebase.database().ref(`/items/${itemId}`);
+function removeItem (itemId) {
+  const itemRef = firebase.database().ref(`/items/${itemId}`)
   itemRef.remove()
 }
 
-function handleChange(e) {
+function handleChange (e) {
   appState[e.target.name] = e.target.value
 }
 
-function handleSubmit(e) {
+function handleSubmit (e) {
   e.preventDefault()
-  if (appState.currentItem === '' || appState.username === '') return
+  if (appState.currentItem === '' || appState.name === '') return
   const itemsRef = firebase.database().ref('items')
   const item = {
     title: appState.currentItem,
-    user: appState.username
+    user: appState.name
   }
   itemsRef.push(item)
 
   appState.currentItem = ''
-  appState.username = ''
+  appState.name = ''
 }
 
 function Main (state) {
-  if (!state.login) return
   return (
     <div className='container'>
       <section className='add-item'>
-          <form onSubmit={handleSubmit} >
-            <input type="text" name="username" placeholder="What's your name?" onChange={handleChange} value={state.username} />
-            <input type="text" name="currentItem" placeholder="What are you bringing?" onChange={handleChange} value={state.currentItem} />
-            <button>Add Item</button>
-          </form>
+        <form onSubmit={handleSubmit} >
+          <input type='text' name='name' placeholder="What's your name?" onChange={handleChange} value={state.name} />
+          <input type='text' name='currentItem' placeholder='What are you bringing?' onChange={handleChange} value={state.currentItem} />
+          <button>Add Item</button>
+        </form>
       </section>
       <section className='display-item'>
         <div className='wrapper'>
