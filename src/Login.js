@@ -26,6 +26,7 @@ function login (email, password) {
     .then(function () {
       // login success
       appState.isLogin = true
+      console.log(appState)
     })
     .catch(function (error) {
       // TODO: handle errors feedback
@@ -40,7 +41,6 @@ function login (email, password) {
 
 function handleInput (e) {
   appState[e.target.name] = e.target.value
-  console.log(appState)
 }
 
 function handleSubmit (evt) {
