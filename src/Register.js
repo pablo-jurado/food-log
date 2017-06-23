@@ -2,8 +2,6 @@ import React from 'react'
 import appState from './index.js'
 import firebase from './firebase.js'
 
-var storage = firebase.storage().ref();
-
 function register (evt) {
   evt.preventDefault()
   // TODO: validate email and pass

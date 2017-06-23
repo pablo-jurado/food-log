@@ -11,7 +11,7 @@ function previewFile(e) {
   console.log('file', file)
 
   firebase.storage().ref().child('images/' + file.name).put(file).then(function(snapshot) {
-    console.log('Uploaded a blob or file!');
+    console.log('Uploaded file!');
   });
 }
 
