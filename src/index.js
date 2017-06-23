@@ -10,6 +10,7 @@ let appState = {
   email: '',
   password: '',
   confirmPassword: '',
+  imgProfile: null,
   items: []
 }
 
@@ -40,11 +41,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     appState.isLogin = true
     appState.email = user.email
     if (user.displayName) appState.name = user.displayName
-    console.log(appState.email, 'user already signed in')
-    console.log('user name: ', appState.name)
-
-  } else {
-    console.log(appState.email, 'user sign out')
   }
 })
 

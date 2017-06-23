@@ -7,7 +7,6 @@ function login (email, password) {
     .then(function () {
       // login success
       appState.isLogin = true
-      console.log(appState)
     })
     .catch(function (error) {
       // TODO: handle errors feedback

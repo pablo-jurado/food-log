@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import Main from './Main.js'
 import Login from './Login.js'
+import Uploader from './Uploader.js'
 import Register from './Register.js'
 import firebase from './firebase.js'
 import appState from './index.js'
@@ -42,6 +43,7 @@ function App (state) {
         </div>
       </header>
       {page}
+      {Uploader(state)}
     </div>
   )
 }

@@ -10,5 +10,5 @@ import firebase from 'firebase'
     messagingSenderId: "173394592537"
   };
   firebase.initializeApp(config);
-
+  
 export default firebase
