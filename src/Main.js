@@ -13,16 +13,14 @@ function handleChange (e) {
 
 function handleSubmit (e) {
   e.preventDefault()
-  if (appState.currentItem === '' || appState.name === '') return
+  if (appState.currentItem === '') return
   const itemsRef = firebase.database().ref('items')
   const item = {
     title: appState.currentItem,
     user: appState.name
   }
   itemsRef.push(item)
-
   appState.currentItem = ''
-  appState.name = ''
 }
 
 function Main (state) {
@@ -30,7 +28,7 @@ function Main (state) {
     <div className='container'>
       <section className='add-item'>
         <form onSubmit={handleSubmit} >
-          <input type='text' name='name' placeholder="What's your name?" onChange={handleChange} value={state.name} />
+          <div>Hi there {state.name}!</div>
           <input type='text' name='currentItem' placeholder='What are you bringing?' onChange={handleChange} value={state.currentItem} />
           <button>Add Item</button>
         </form>

@@ -10,6 +10,7 @@ function signOutUser () {
   firebase.auth().signOut().then(function() {
     appState.isLogin = false
     appState.showRegister = false
+    appState.name = ''
     appState.email = ''
     appState.password = ''
   }, function(error) {
@@ -35,7 +36,7 @@ function App (state) {
         <div className='wrapper'>
           <h1>Food Log</h1>
           <div className={profileClass}>
-            <span>{state.email}</span>
+            <span>{state.name}</span>
             <button onClick={signOutUser} >Log out</button>
           </div>
         </div>

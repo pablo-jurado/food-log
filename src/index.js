@@ -9,6 +9,7 @@ let appState = {
   name: '',
   email: '',
   password: '',
+  confirmPassword: '',
   items: []
 }
 
@@ -38,23 +39,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in, updates user info to appState
     appState.isLogin = true
     appState.email = user.email
+    if (user.displayName) appState.name = user.displayName
+    console.log(appState.email, 'user already signed in')
+    console.log('user name: ', appState.name)
+
   } else {
-    console.log('user sign out')
+    console.log(appState.email, 'user sign out')
   }
 })
-
-function updateProfile () {
-  let user = firebase.auth().currentUser;
-  user.updateProfile({
-    displayName: "Jane Q. User",
-    photoURL: "https://example.com/jane-q-user/profile.jpg"
-  }).then(function() {
-    console.log('Update successful.')
-  }, function(error) {
-    console.log('An error happened.')
-  });
-}
-
 
 // ---------------------------------------------------------
 // Render Loop
