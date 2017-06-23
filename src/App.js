@@ -2,12 +2,14 @@ import React from 'react'
 import './App.css'
 import Main from './Main.js'
 import Login from './Login.js'
+import Register from './Register.js'
 import firebase from './firebase.js'
 import appState from './index.js'
 
 function signOutUser () {
   firebase.auth().signOut().then(function() {
     appState.isLogin = false
+    appState.showRegister = false
     appState.email = ''
     appState.password = ''
   }, function(error) {
@@ -16,8 +18,13 @@ function signOutUser () {
 }
 
 function App (state) {
-  let page = Login(state)
+  let page = null
   let profileClass = 'profile hide'
+
+  if (!state.isLogin) page = Login(state)
+  if (state.showRegister) page = Register(state)
+
+  // if user is login show main page and profile
   if (state.isLogin) {
     page = Main(state)
     profileClass = 'profile'
