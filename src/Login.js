@@ -40,8 +40,8 @@ function Login (state) {
   return (
     <form className='login-form'>
       <h1>Login</h1>
-        <input placeholder='Email' onChange={handleInput} value={state.email} name='email' type='text' />
-        <input placeholder='Password' onChange={handleInput} value={state.password} name='password' type='password' />
+      <input placeholder='Email' onChange={handleInput} value={state.email} name='email' type='text' />
+      <input placeholder='Password' onChange={handleInput} value={state.password} name='password' type='password' />
       <div className='feedback'>{feedback}</div>
       <button onClick={handleSubmit} className='primary-btn' id='loginBtn'>Log In</button>
       <a onClick={showRegister}>Create new account</a>

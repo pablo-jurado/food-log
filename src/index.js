@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom'
 import App from './App'
-import './index.css'
 import firebase from './firebase.js'
 
 let appState = {
@@ -32,7 +31,7 @@ itemsRef.on('value', (snapshot) => {
 })
 
 // checks if user is already sign in
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // var displayName = user.displayName;
     // var photoURL = user.photoURL;
