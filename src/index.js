@@ -5,6 +5,7 @@ import firebase from './firebase.js'
 
 let appState = {
   isLogin: false,
+  editProfile: false,
   currentItem: '',
   name: '',
   email: '',

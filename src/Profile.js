@@ -17,7 +17,7 @@ function signOutUser () {
 }
 
 function editProfile () {
-  console.log('edit profile')
+  appState.editProfile = true
 }
 
 function toggleDropdown () {
@@ -38,7 +38,6 @@ function Profile (state) {
         <a onClick={signOutUser}>Logout</a>
       </div>
     </div>
-
   )
 }
 

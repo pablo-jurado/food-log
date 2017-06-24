@@ -27,11 +27,11 @@ function register (evt) {
 }
 
 function updateProfile (name) {
-  let user = firebase.auth().currentUser;
+  let user = firebase.auth().currentUser
   user.updateProfile({
-    displayName: name,
+    displayName: name
     // photoURL: "https://example.com/jane-q-user/profile.jpg"
-  }).catch(function() {
+  }).catch(function () {
     console.log('An error happened updating name.')
   })
 }
@@ -47,10 +47,10 @@ function Register (state) {
   return (
     <form className='login-form'>
       <h1>Register</h1>
-        <input placeholder='Name' onChange={handleInput} value={state.name} name='name' type='text'/>
-        <input placeholder='Email' onChange={handleInput} value={state.email} name='email' type='text'/>
-        <input placeholder='Password' onChange={handleInput} value={state.password} name='password' type='password' />
-        <input placeholder='Confirm Password' onChange={handleInput} value={state.confirmPassword} name='confirmPassword' type='password' />
+      <input placeholder='Name' onChange={handleInput} value={state.name} name='name' type='text' />
+      <input placeholder='Email' onChange={handleInput} value={state.email} name='email' type='text' />
+      <input placeholder='Password' onChange={handleInput} value={state.password} name='password' type='password' />
+      <input placeholder='Confirm Password' onChange={handleInput} value={state.confirmPassword} name='confirmPassword' type='password' />
       <div className='feedback'>{feedback}</div>
       <div className='action-row'>
         <button onClick={register} className='primary-btn' id='loginBtn'>Register</button>
