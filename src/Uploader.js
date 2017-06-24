@@ -4,21 +4,22 @@ import firebase from './firebase.js'
 
 // storage :  allow read, write: if request.auth != null;
 
-function previewFile(e) {
+function previewFile (e) {
   //var preview = document.querySelector('img');
   var file = e.target.files[0]
   var reader  = new FileReader()
   console.log('file', file)
 
-  firebase.storage().ref().child('images/' + file.name).put(file).then(function(snapshot) {
-    console.log('Uploaded file!');
-  });
+  firebase.storage().ref().child('images/' + file.name).put(file)
+    .then(function (snapshot) {
+      console.log('Uploaded file!')
+    })
 }
 
 function Uploader (state) {
   return (
     <div className='uploader'>
-      <input onChange={previewFile} type='file' /><br/>
+      <input onChange={previewFile} type='file' /><br />
     </div>
   )
 }

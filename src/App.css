@@ -24,7 +24,7 @@ header h1 {
   margin: 0;
   vertical-align: middle
 }
-.hide {
+.profile.hide {
   display: none;
 }
 .profile {
@@ -105,7 +105,7 @@ ul {
   padding: 0;
 }
 
-li {
+.container li {
   width: calc(50% - 50px);
   list-style-type: none;
   margin-right: 50px;
@@ -121,7 +121,7 @@ h2 {
   font-weight: 400;
 }
 
-li h3 {
+.container li h3 {
   background-color: #103D5D;
   margin: 0;
   color: #fff;
@@ -129,7 +129,7 @@ li h3 {
   padding: 15px;
 }
 
-li p {
+.container li p {
   padding: 15px;
 }
 
@@ -191,4 +191,56 @@ form h1 {
 .feedback {
   font-weight: 600;
   padding-top: 1rem;
+}
+
+.profile-dropdown {
+  border: solid 1px grey;
+}
+
+.dropbtn {
+  border-radius: 2px;
+  background-color: #FA6900;
+  cursor: pointer;
+  border: 0;
+  min-width: 120px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  padding: 10px 15px;
+}
+
+.profile {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 27px;
+  right: 10px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.profile-dropdown a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.profile-dropdown a:hover {
+  background-color: #b8b8b8;
+}
+
+.profile:hover .profile-dropdown  {
+  display: block;
+}
+
+.profile:hover .dropbtn {
+  background-color: #ac7044;
 }
