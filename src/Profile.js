@@ -32,7 +32,8 @@ function Profile (state) {
   if (showDropdown) dropdownClass += ' show'
   return (
     <div className={profileClass}>
-      <span className='dropbtn' onClick={toggleDropdown}>{state.name}</span>
+      <div className='user-button' onClick={toggleDropdown}>{state.name}</div>
+      <img src={appState.profileImg} />
       <div className={dropdownClass}>
         <a onClick={editProfile}>Edir Profile</a>
         <a onClick={signOutUser}>Logout</a>

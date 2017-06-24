@@ -5,6 +5,7 @@ import firebase from './firebase.js'
 let appState = {
   isLogin: false,
   editProfile: false,
+  profileImg: null,
   currentItem: '',
   name: '',
   email: '',
@@ -13,6 +14,13 @@ let appState = {
   imgProfile: null,
   items: []
 }
+
+// get default profile Img from storage
+firebase.storage().ref('images/octo.jpg')
+  .getDownloadURL()
+  .then(function (url) {
+    appState.profileImg = url
+  })
 
 // this is the reference to the my DB item
 const itemsRef = firebase.database().ref('items')

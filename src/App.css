@@ -32,6 +32,7 @@ header {
   background-color: #103D5D;
   padding-top: 20px;
   height: 70px;
+  position: relative;
 }
 
 header h1 {
@@ -39,20 +40,71 @@ header h1 {
   font-weight: 600;
   letter-spacing: 0.3px;
   display: inline-block;
-  margin: 0;
+  margin: 0 10px;
   vertical-align: middle
+}
+.profile {
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
 }
 
 .profile.hide {
   display: none;
 }
 
-.profile {
-  float: right;
+.profile img {
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px 0 black;
 }
 
-.profile span {
+.user-button {
   margin-right: 10px;
+  border-radius: 2px;
+  background-color: #FA6900;
+  cursor: pointer;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 black;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 41px;
+  right: 50px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: solid 1px grey;
+  z-index: 1;
+}
+
+.profile-dropdown a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.profile-dropdown a:hover {
+  background-color: #b8b8b8;
+}
+
+.profile:hover .profile-dropdown  {
+  display: block;
+}
+
+.profile:hover .dropbtn {
+  background-color: #ac7044;
 }
 
 .fa {
@@ -60,15 +112,11 @@ header h1 {
   transform: translateY(50deg);
 }
 
-header i {
-  vertical-align: middle;
-  margin-left: 12px;
-}
-
 .container {
   display: flex;
   max-width: 1100px;
   padding: 20px;
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -78,7 +126,6 @@ header i {
 
 .add-item {
   border-radius: 2px;
-  border-top: 3px solid #103D5D;
   margin-right: 50px;
   background-color: rgb(237, 237, 237);
   padding: 60px 18px;
@@ -104,6 +151,12 @@ header i {
   overflow: hidden;
   text-align: center;
 }
+input[type='file'] {
+  border: none;
+  background: transparent;
+  margin: auto;
+  display: inline-block;
+}
 
 input {
   background: white;
@@ -113,7 +166,6 @@ input {
   width: 100%;
   margin-top: 1rem;
   display: inline-block;
-
 }
 
 ul {
@@ -151,7 +203,7 @@ h2 {
   padding: 15px;
 }
 
-form button {
+.add-item button {
   width: 100%;
   margin: 10px 0px;
 }
@@ -210,54 +262,65 @@ form h1 {
   padding-top: 1rem;
 }
 
-.profile-dropdown {
-  border: solid 1px grey;
+.modal-back {
+  background-color: rgba(34, 83, 120, 0.75);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  /*opacity: 0;*/
+  /*transform: scale(1.5);*/
+  padding: 5px;
+  z-index: 100;
 }
 
-.dropbtn {
-  border-radius: 2px;
-  background-color: #FA6900;
-  cursor: pointer;
-  border: 0;
-  min-width: 120px;
-  color: #fff;
-  font-size: 14px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-  padding: 10px 15px;
-}
-
-.profile {
-  position: relative;
-  display: inline-block;
-}
-
-.profile-dropdown {
-  display: none;
+.modal {
+  background-color: white;
+  width: 400px;
   position: absolute;
-  top: 27px;
-  right: 10px;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  top: 40%;
+  left: 50%;
+  margin: -200px 0 0 -200px;
+  /*pointer-events: none;*/
+  /*transform: scale(1.25);*/
+  /*opacity: 0;*/
+  z-index: 200;
+  box-shadow: 0 0 30px #173850;
 }
 
-.profile-dropdown a {
-  color: black;
-  padding: 10px 15px;
-  text-decoration: none;
+.x-btn {
+  position: absolute;
+  right: 15px;
+}
+
+.modal .edit-profile-form {
+  border-radius: 2px;
+  background-color: rgb(237, 237, 237);
+  padding: 1.5rem;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
+}
+
+.modal .action-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal button {
+  width: 48%;
+}
+
+.edit-profile-form img {
+  width: 200px;
+  border-radius: 50%;
+  border: solid 1px #ccc;
+  box-shadow: 0 0 10px #ccc;
+  margin: 0 auto;
   display: block;
-  cursor: pointer;
 }
 
-.profile-dropdown a:hover {
-  background-color: #b8b8b8;
-}
-
-.profile:hover .profile-dropdown  {
-  display: block;
-}
-
-.profile:hover .dropbtn {
-  background-color: #ac7044;
+.edit-profile-form h4 {
+  text-align: center;
+  margin-top: 0px;
 }

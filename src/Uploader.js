@@ -19,7 +19,7 @@ function previewFile (e) {
 function Uploader (state) {
   return (
     <div className='uploader'>
-      <input onChange={previewFile} type='file' /><br />
+      <input onChange={previewFile} type='file' />
     </div>
   )
 }

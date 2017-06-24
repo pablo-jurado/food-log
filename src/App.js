@@ -15,14 +15,12 @@ function App (state) {
     <div>
       <div className='app'>
         <header>
-          <div className='wrapper'>
             <h1>Food Log</h1>
             {Profile(state)}
-          </div>
         </header>
         {page}
-        {EditProfile(state)}
       </div>
+      {EditProfile(state)}
       <footer>
         I am footer
       </footer>
