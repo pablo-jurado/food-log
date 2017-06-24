@@ -15,8 +15,8 @@ function App (state) {
     <div>
       <div className='app'>
         <header>
-            <h1>Food Log</h1>
-            {Profile(state)}
+          <h1>Food Log</h1>
+          {Profile(state)}
         </header>
         {page}
       </div>

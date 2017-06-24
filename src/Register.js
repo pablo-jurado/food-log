@@ -27,13 +27,19 @@ function register (evt) {
 }
 
 function updateProfile (name) {
-  let user = firebase.auth().currentUser
-  user.updateProfile({
-    displayName: name
-    // photoURL: "https://example.com/jane-q-user/profile.jpg"
-  }).catch(function () {
-    console.log('An error happened updating name.')
-  })
+  // get default profile Img from storage
+  firebase.storage().ref('images/octo.jpg')
+    .getDownloadURL()
+    .then(function (url) {
+      let user = firebase.auth().currentUser
+      // saves default picture on DB
+      user.updateProfile({
+        displayName: name,
+        photoURL: url
+      })
+      // assings img to user in appState
+      appState.profileImg = url
+    })
 }
 
 function handleInput (e) {

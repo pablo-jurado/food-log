@@ -34,8 +34,6 @@ function editProfile (state) {
             {Uploader()}
             <input placeholder='Name' onChange={handleInput} value={state.name} name='name' type='text' />
             <input placeholder='Email' onChange={handleInput} value={state.email} name='email' type='text' />
-            <input placeholder='Password' onChange={handleInput} value={state.password} name='password' type='password' />
-            <input placeholder='Confirm Password' onChange={handleInput} value={state.confirmPassword} name='confirmPassword' type='password' />
             <div className='action-row'>
               <button onClick={updateProfile} className='primary-btn' id='loginBtn'>Save</button>
               <button onClick={closeModal} className='primary-btn' id='loginBtn'>Cancel</button>

@@ -15,13 +15,6 @@ let appState = {
   items: []
 }
 
-// get default profile Img from storage
-firebase.storage().ref('images/octo.jpg')
-  .getDownloadURL()
-  .then(function (url) {
-    appState.profileImg = url
-  })
-
 // this is the reference to the my DB item
 const itemsRef = firebase.database().ref('items')
 // this watch for changes in the the value and updates appState when DB changes
@@ -42,13 +35,13 @@ itemsRef.on('value', (snapshot) => {
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // var displayName = user.displayName;
-    // var photoURL = user.photoURL;
     // var uid = user.uid;
 
     // User is signed in, updates user info to appState
     appState.isLogin = true
     appState.email = user.email
     if (user.displayName) appState.name = user.displayName
+    if (user.photoURL) appState.profileImg = user.photoURL
   }
 })
 
