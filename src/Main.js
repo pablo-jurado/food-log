@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from './firebase.js'
-import appState from './index.js'
+import appState from './State'
 
 function removeItem (itemId) {
   const itemRef = firebase.database().ref(`/items/${itemId}`)

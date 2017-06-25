@@ -1,39 +1,84 @@
 import React from 'react'
 import firebase from './firebase.js'
-import appState from './index.js'
-import Uploader from './Uploader.js'
+import appState from './State'
 
-function updateProfile (name) {
-  console.log('update Profile')
-  // let user = firebase.auth().currentUser
-  // user.updateProfile({
-  //   displayName: name
-  //   // photoURL: "https://example.com/jane-q-user/profile.jpg"
-  // }).catch(function () {
-  //   console.log('An error happened updating name.')
-  // })
+function updateProfile (e) {
+  e.preventDefault()
+  saveImg()
+}
+
+function getImgFromStorage () {
+  firebase.storage().ref('images/' + appState.userId)
+    .getDownloadURL()
+    .then(function (url) {
+      let user = firebase.auth().currentUser
+      // saves storage picture URL on firebase user profile
+      user.updateProfile({
+        photoURL: url
+      })
+      // assings img to user in appState
+      console.log('got pic from storage')
+      appState.profileImg = url
+      appState.editProfile.imgUrl = url
+      appState.editProfile.active = false
+    }).catch(function () {
+      console.log('An error happened updating name.')
+    })
+}
+
+function saveImg () {
+  let file = appState.editProfile.imgFile
+  if (file) {
+    firebase.storage().ref().child('images/' + appState.userId)
+      .put(file)
+      .then(function (snapshot) {
+        console.log('Uploaded file!')
+        getImgFromStorage()
+      })
+  }
 }
 
 function closeModal (e) {
   e.preventDefault()
-  appState.editProfile = false
+  appState.editProfile.active = false
 }
 
 function handleInput (e) {
-  appState[e.target.name] = e.target.value
+  appState['editProfile'][e.target.name] = e.target.value
+}
+
+function loadFile (e) {
+  let file = e.target.files[0]
+  console.log(file)
+  renderImage(file)
+}
+
+function renderImage (file) {
+  // generate a new FileReader object
+  var reader = new FileReader()
+  // saves url and file to appState
+  reader.onload = function (event) {
+    let theUrl = event.target.result
+    appState.editProfile.imgUrl = theUrl
+    appState.editProfile.imgFile = file
+  }
+  // when the file is read it triggers the onload event above.
+  reader.readAsDataURL(file)
 }
 
 function editProfile (state) {
-  if (state.editProfile) {
+  if (state.editProfile.active) {
     return (
       <div>
         <div className='modal'>
           <form className='edit-profile-form'>
             <h4>Edit Profile</h4>
-            <img src={appState.profileImg} alt='profile' />
-            {Uploader()}
-            <input placeholder='Name' onChange={handleInput} value={state.name} name='name' type='text' />
-            <input placeholder='Email' onChange={handleInput} value={state.email} name='email' type='text' />
+            <img src={appState.editProfile.imgUrl} alt='profile' />
+            <div className='uploader'>
+              <input onChange={loadFile} type='file' />
+            </div>
+            <input placeholder={state.name} onChange={handleInput} value={state.editProfile.name} name='name' type='text' />
+            <input placeholder={state.email} onChange={handleInput} value={state.editProfile.email} name='email' type='text' />
             <div className='action-row'>
               <button onClick={updateProfile} className='primary-btn' id='loginBtn'>Save</button>
               <button onClick={closeModal} className='primary-btn' id='loginBtn'>Cancel</button>

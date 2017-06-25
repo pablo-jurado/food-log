@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from './firebase.js'
-import appState from './index.js'
+import appState from './State'
 
 let showDropdown = false
 
@@ -17,7 +17,7 @@ function signOutUser () {
 }
 
 function editProfile () {
-  appState.editProfile = true
+  appState.editProfile.active = true
 }
 
 function toggleDropdown () {
@@ -35,7 +35,7 @@ function Profile (state) {
       <div className='user-button' onClick={toggleDropdown}>{state.name}</div>
       <img src={appState.profileImg} />
       <div className={dropdownClass}>
-        <a onClick={editProfile}>Edir Profile</a>
+        <a onClick={editProfile}>Edit Profile</a>
         <a onClick={signOutUser}>Logout</a>
       </div>
     </div>

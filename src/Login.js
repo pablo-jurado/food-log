@@ -1,5 +1,5 @@
 import React from 'react'
-import appState from './index.js'
+import appState from './State'
 import firebase from './firebase.js'
 
 function login (email, password) {

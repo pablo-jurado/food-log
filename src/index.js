@@ -1,19 +1,7 @@
 import ReactDOM from 'react-dom'
-import App from './App'
 import firebase from './firebase.js'
-
-let appState = {
-  isLogin: false,
-  editProfile: false,
-  profileImg: null,
-  currentItem: '',
-  name: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-  imgProfile: null,
-  items: []
-}
+import App from './App'
+import appState from './State'
 
 // this is the reference to the my DB item
 const itemsRef = firebase.database().ref('items')
@@ -34,14 +22,16 @@ itemsRef.on('value', (snapshot) => {
 // checks if user is already sign in
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    // var displayName = user.displayName;
-    // var uid = user.uid;
-
+    // var displayName = ;
     // User is signed in, updates user info to appState
     appState.isLogin = true
     appState.email = user.email
-    if (user.displayName) appState.name = user.displayName
-    if (user.photoURL) appState.profileImg = user.photoURL
+    appState.userId = user.uid
+    appState.name = user.displayName
+    if (user.photoURL) {
+      appState.profileImg = user.photoURL
+      appState.editProfile.imgUrl = user.photoURL
+    }
   }
 })
 

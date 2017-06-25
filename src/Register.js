@@ -1,5 +1,5 @@
 import React from 'react'
-import appState from './index.js'
+import appState from './State'
 import firebase from './firebase.js'
 
 function register (evt) {
@@ -14,7 +14,7 @@ function register (evt) {
   let password = appState.password
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function () {
-      updateProfile(appState.name)
+      updateProfile()
       appState.isLogin = true
     })
     .catch(function (error) {
@@ -28,17 +28,18 @@ function register (evt) {
 
 function updateProfile (name) {
   // get default profile Img from storage
-  firebase.storage().ref('images/octo.jpg')
+  firebase.storage().ref('images/default_user.png')
     .getDownloadURL()
     .then(function (url) {
       let user = firebase.auth().currentUser
       // saves default picture on DB
       user.updateProfile({
-        displayName: name,
+        displayName: appState.name,
         photoURL: url
       })
       // assings img to user in appState
       appState.profileImg = url
+      appState.editProfile.img = url
     })
 }
 
