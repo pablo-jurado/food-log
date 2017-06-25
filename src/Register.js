@@ -14,8 +14,8 @@ function register (evt) {
   let password = appState.password
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function () {
-      updateProfile()
       appState.isLogin = true
+      updateProfile(appState.name)
     })
     .catch(function (error) {
       if (error.code === 'auth/weak-password') {
@@ -34,12 +34,12 @@ function updateProfile (name) {
       let user = firebase.auth().currentUser
       // saves default picture on DB
       user.updateProfile({
-        displayName: appState.name,
+        displayName: name,
         photoURL: url
       })
       // assings img to user in appState
       appState.profileImg = url
-      appState.editProfile.img = url
+      appState.editProfile.imgUrl = url
     })
 }
 

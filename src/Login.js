@@ -15,7 +15,6 @@ function login (email, password) {
       } else {
         console.log(error.message)
       }
-      console.log(error)
     })
 }
 

@@ -27,7 +27,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     appState.isLogin = true
     appState.email = user.email
     appState.userId = user.uid
-    appState.name = user.displayName
+    // needs to check if they have name and img register
+    if (user.displayName) appState.name = user.displayName
     if (user.photoURL) {
       appState.profileImg = user.photoURL
       appState.editProfile.imgUrl = user.photoURL

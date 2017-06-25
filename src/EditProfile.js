@@ -2,8 +2,9 @@ import React from 'react'
 import firebase from './firebase.js'
 import appState from './State'
 
-function updateProfile (e) {
+function SaveChanges (e) {
   e.preventDefault()
+  if (appState.editProfile.name !== '') appState.name = appState.editProfile.name
   saveImg()
 }
 
@@ -14,6 +15,7 @@ function getImgFromStorage () {
       let user = firebase.auth().currentUser
       // saves storage picture URL on firebase user profile
       user.updateProfile({
+        displayName: appState.name,
         photoURL: url
       })
       // assings img to user in appState
@@ -49,7 +51,6 @@ function handleInput (e) {
 
 function loadFile (e) {
   let file = e.target.files[0]
-  console.log(file)
   renderImage(file)
 }
 
@@ -61,6 +62,7 @@ function renderImage (file) {
     let theUrl = event.target.result
     appState.editProfile.imgUrl = theUrl
     appState.editProfile.imgFile = file
+    console.log('img load on local state')
   }
   // when the file is read it triggers the onload event above.
   reader.readAsDataURL(file)
@@ -78,9 +80,8 @@ function editProfile (state) {
               <input onChange={loadFile} type='file' />
             </div>
             <input placeholder={state.name} onChange={handleInput} value={state.editProfile.name} name='name' type='text' />
-            <input placeholder={state.email} onChange={handleInput} value={state.editProfile.email} name='email' type='text' />
             <div className='action-row'>
-              <button onClick={updateProfile} className='primary-btn' id='loginBtn'>Save</button>
+              <button onClick={SaveChanges} className='primary-btn' id='loginBtn'>Save</button>
               <button onClick={closeModal} className='primary-btn' id='loginBtn'>Cancel</button>
             </div>
           </form>
