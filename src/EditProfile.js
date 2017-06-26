@@ -42,6 +42,9 @@ function saveImg () {
 
 function closeModal (e) {
   e.preventDefault()
+  appState.editProfile.name = ''
+  appState.editProfile.imgFile = null
+  appState.editProfile.imgUrl = appState.profileImg
   appState.editProfile.active = false
 }
 

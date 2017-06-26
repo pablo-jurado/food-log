@@ -19,22 +19,27 @@ itemsRef.on('value', (snapshot) => {
   appState.items = newState
 })
 
-// checks if user is already sign in
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // var displayName = ;
-    // User is signed in, updates user info to appState
-    appState.isLogin = true
-    appState.email = user.email
-    appState.userId = user.uid
-    // needs to check if they have name and img register
-    if (user.displayName) appState.name = user.displayName
-    if (user.photoURL) {
-      appState.profileImg = user.photoURL
-      appState.editProfile.imgUrl = user.photoURL
+function updateUserProfile () {
+  // checks if user is already sign in
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in, updates user info to appState
+      appState.email = user.email
+      appState.userId = user.uid
+      // needs to check if they have name and img register
+      if (user.displayName) appState.name = user.displayName
+      if (user.photoURL) {
+        appState.profileImg = user.photoURL
+        appState.editProfile.imgUrl = user.photoURL
+      }
+      appState.isLogin = true
+    } else {
+      console.log('user not Login')
     }
-  }
-})
+  })
+}
+
+updateUserProfile()
 
 // ---------------------------------------------------------
 // Render Loop
@@ -49,4 +54,4 @@ function renderNow () {
 
 window.requestAnimationFrame(renderNow)
 
-export default appState
+export default updateUserProfile

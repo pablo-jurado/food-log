@@ -1,12 +1,14 @@
 import React from 'react'
 import appState from './State'
 import firebase from './firebase.js'
+import updateUserProfile from './index.js'
 
 function login (email, password) {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then(function () {
       // login success
       appState.isLogin = true
+      updateUserProfile()
     })
     .catch(function (error) {
       // TODO: handle errors feedback
