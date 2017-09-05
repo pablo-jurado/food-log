@@ -11,6 +11,8 @@ and deploy with [Surge](http://surge.sh/)
 This React App is a food log that keeps track of items when having a pot lock party.
 Uses Firebase for user authentication, profile images and database.
 
+[Link](http://food-log.surge.sh/)
+
 <img src="ScreenShot.png" alt="React App Screen shot">
 
 
