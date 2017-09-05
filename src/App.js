@@ -22,7 +22,7 @@ function App (state) {
       </div>
       {EditProfile(state)}
       <footer>
-        I am footer
+        <a href="http://pablojurado.com" target="_blank" rel="noopener noreferrer">Pablo Jurado</a>
       </footer>
     </div>
   )

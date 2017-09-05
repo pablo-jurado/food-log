@@ -17,19 +17,13 @@ body {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 50px);
-}
-
-footer {
-  color: #fff;
-  background-color: #103D5D;
-  padding: 15px;
-  text-align: center;
-  height: 50px;
+  background: #DCE1E5;
+  color: #225378;
 }
 
 header {
-  color: #fff;
-  background-color: #103D5D;
+  color: #DCE1E5;
+  background-color: #225378;
   padding-top: 20px;
   height: 70px;
   position: relative;
@@ -65,7 +59,7 @@ header h1 {
 .user-button {
   margin-right: 10px;
   border-radius: 2px;
-  background-color: #FA6900;
+  background-color: #1695A3;
   cursor: pointer;
   border: 0;
   color: #fff;
@@ -114,6 +108,7 @@ header h1 {
 
 .container {
   display: flex;
+  flex-direction: column;
   width: 800px;
   padding: 20px;
   margin: 0 auto;
@@ -126,18 +121,15 @@ header h1 {
 
 .add-item {
   border-radius: 2px;
-  margin-right: 50px;
-  background-color: rgb(237, 237, 237);
+  background-color: #fff;
   padding: 60px 18px;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
   margin-bottom: 34px;
-  margin-right: auto;
   max-height: 245px;
 }
 
 .display-item {
-  width: 65%;
-  margin-left: 50px;
+  width: 100%;
 }
 
 .display-item button {
@@ -176,13 +168,12 @@ ul {
 }
 
 .container li {
-  width: calc(50% - 50px);
+  box-sizing: content-box;
   list-style-type: none;
-  margin-right: 50px;
-  background-color: rgb(237, 237, 237);
-  color: #000;
-  margin-bottom: 30px;
+  background-color: #fff;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
+  width: 45%;
+  margin: 2.5%;
 }
 
 h2 {
@@ -192,7 +183,7 @@ h2 {
 }
 
 .container li h3 {
-  background-color: #103D5D;
+  background-color: #225378;
   margin: 0;
   color: #fff;
   font-weight: 300;
@@ -202,10 +193,11 @@ h2 {
 .container li p {
   padding: 15px;
 }
-.login-form button,
-.add-item button {
+.login-form button, .add-item button {
   width: 100%;
   margin: 10px 0px;
+  background-color: #1695A3;
+  color: #fff;
 }
 
 form button:hover {
@@ -215,11 +207,11 @@ form button:hover {
 button {
   border-radius: 2px;
   min-width: 88px;
-  background-color: #FA6900;
+  color: #fff;
+  background: #1695A3;
   cursor: pointer;
   border: 0;
   min-width: 120px;
-  color: #fff;
   font-size: 14px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   padding: 10px 6px;
@@ -228,7 +220,7 @@ button {
 .login-form {
   border-radius: 2px;
   margin-right: 50px;
-  background-color: rgb(237, 237, 237);
+  background-color: #fff;
   padding: 1.5rem;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
   margin-bottom: 34px;
@@ -240,7 +232,8 @@ button {
   display: inline-block;
   margin: 5px 0px;
   font-size: .85em;
-  cursor: pointer
+  cursor: pointer;
+  color: #EB7F00;
 }
 
 .login-form a:hover {
@@ -269,8 +262,6 @@ form h1 {
   position: fixed;
   left: 0;
   top: 0;
-  /*opacity: 0;*/
-  /*transform: scale(1.5);*/
   padding: 5px;
   z-index: 100;
 }
@@ -282,9 +273,6 @@ form h1 {
   top: 40%;
   left: 50%;
   margin: -200px 0 0 -200px;
-  /*pointer-events: none;*/
-  /*transform: scale(1.25);*/
-  /*opacity: 0;*/
   z-index: 200;
   box-shadow: 0 0 30px #173850;
 }
@@ -323,4 +311,16 @@ form h1 {
 .edit-profile-form h4 {
   text-align: center;
   margin-top: 0px;
+}
+
+footer {
+  color: #DCE1E5;
+  background-color: #1695A3;
+  padding: 15px;
+  text-align: center;
+  height: 50px;
+}
+
+footer a {
+    color: #DCE1E5;
 }
