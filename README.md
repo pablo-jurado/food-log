@@ -8,7 +8,7 @@ and deploy with [Surge](http://surge.sh/)
 
 > App status: work in progress
 
-This React App is a food log that keeps track of items when having a pot lock party.
+This React App is a food log that keeps track of items when having a potluck party.
 Uses Firebase for user authentication, profile images and database.
 
 [Link](http://food-log.surge.sh/)
