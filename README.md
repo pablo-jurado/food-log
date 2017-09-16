@@ -9,11 +9,11 @@ and deploy with [Surge](http://surge.sh/)
 > App status: work in progress
 
 This React App is a food log that keeps track of items when having a potluck party.
-Uses Firebase for user authentication, profile images and database.
+Uses Firebase for user authentication, profile images, and database.
 
 [Link](http://food-log.surge.sh/)
 
-<img src="ScreenShot.png" alt="React App Screen shot">
+<img src="ScreenShot.png" alt="React App Screenshot">
 
 
 ## Tech/framework used
