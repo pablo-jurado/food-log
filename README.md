@@ -13,7 +13,10 @@ Uses Firebase for user authentication, profile images, and database.
 
 [Link](http://food-log.surge.sh/)
 
-<img src="ScreenShot.png" alt="React App Screenshot">
+<img src="ScreenShot1.png" alt="React App Screenshot">
+<img src="ScreenShot2.png" alt="React App Screenshot">
+<img src="ScreenShot3.png" alt="React App Screenshot">
+
 
 
 ## Tech/framework used
